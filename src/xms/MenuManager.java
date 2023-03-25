@@ -24,9 +24,9 @@ public class MenuManager {
 				int subjectNumber = input.nextInt();
 				System.out.print("Subject Name : ");
 				String subject = input.next();
-				System.out.print("Exam date : ");
+				System.out.print("Exam Date : ");
 				String examDate = input.next();
-				System.out.print("Exam time : ");
+				System.out.print("Exam Time : ");
 				String examTime = input.next();
 				System.out.print("Study Plan : ");
 				String studyPlan = input.next();
