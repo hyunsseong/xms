@@ -15,37 +15,39 @@ public class MenuManager {
 			System.out.println("4. View subject");
 			System.out.println("5. Show a Menu");
 			System.out.println("6. Exit");
-			System.out.print("Select one number :");
+			System.out.print("Select one number : ");
 			num = input.nextInt();
 		
 			switch (num) {
 			case 1 :
 				System.out.print("Subject Number : ");
 				int subjectNumber = input.nextInt();
+				input.nextLine();
 				System.out.print("Subject Name : ");
-				String subject = input.next();
+				String subject = input.nextLine();
 				System.out.print("Exam Date : ");
-				String examDate = input.next();
+				String examDate = input.nextLine();
 				System.out.print("Exam Time : ");
-				String examTime = input.next();
+				String examTime = input.nextLine();
 				System.out.print("Study Plan : ");
-				String studyPlan = input.next();
+				String studyPlan = input.nextLine();
+				System.out.println();
 				break;
 			case 2:
-				System.out.println("Subject Number : ");
+				System.out.print("Subject Number : ");
 				int deleteSubject = input.nextInt();
 				break;
 			case 3:
-				System.out.println("Subject Number : ");
+				System.out.print("Subject Number : ");
 				int editSubject = input.nextInt();
 				break;
 			case 4:
-				System.out.println("Subject Number : ");
+				System.out.print("Subject Number : ");
 				int viewSubject = input.nextInt();
 				break;
 			case 5:
 			case 6:
-				break;
+				continue;
 			}
 		}
 	}
