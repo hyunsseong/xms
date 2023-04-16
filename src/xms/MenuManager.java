@@ -5,71 +5,40 @@ import java.util.Scanner;
 public class MenuManager {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int num = 5;
 		Scanner input = new Scanner(System.in);
+		SubjectManager subjectManager = new SubjectManager(input); 
 		
-		while (num != 6) {
-			System.out.println("1. Add subject");
-			System.out.println("2. Delete subject");
-			System.out.println("3. Edit subject");
-			System.out.println("4. View subject");
-			System.out.println("5. Show a Menu");
-			System.out.println("6. Exit");
-			System.out.print("Select one number between 1 - 6: ");
+		int num = -1;
+		while (num != 5) {
+			System.out.println("---- Subject Management System Menu ----");
+			System.out.println("1. Add Subject");
+			System.out.println("2. Delete Subject");
+			System.out.println("3. Edit Subject");
+			System.out.println("4. View Subjects");
+			System.out.println("5. Exit");
+			System.out.print("Select one number between 1 - 5: ");
 			num = input.nextInt();
 			
 			
 			switch (num) {
 			case 1 :
-				addSubject();
+				subjectManager.addSubject();
 				break;
 			case 2:
-				deleteSubject();
+				subjectManager.deleteSubject();
 				break;
 			case 3:
-				editSubject();
+				subjectManager.editSubject();
 				break;
 			case 4:
-				viewSubject();
+				subjectManager.viewSubjects();
 				break;
 			case 5:
-			case 6:
 				continue;
 			}
 		}
 	}
 	
-	public static void addSubject() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Subject Number : ");
-		int subjectNumber = input.nextInt();
-		input.nextLine();
-		System.out.print("Subject Name : ");
-		String subject = input.nextLine();
-		System.out.print("Exam Date : ");
-		String examDate = input.nextLine();
-		System.out.print("Exam Time : ");
-		String examTime = input.nextLine();
-		System.out.print("Study Plan : ");
-		String studyPlan = input.nextLine();
-	}
 	
-	public static void deleteSubject() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Subject Number : ") ;
-		int subjectNumber = input.nextInt();
-	}
-	
-	public static void editSubject() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Subject Number : ");
-		int subjectNumber = input.nextInt();
-	}
-	
-	public static void viewSubject() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Subject Number : ");
-		int subjectNumber = input.nextInt();
-	}
 }
 
