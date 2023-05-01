@@ -2,6 +2,9 @@ package xms;
 
 import java.util.*;
 
+import subject.MathSubject;
+import subject.Subject;
+
 public class SubjectManager {
 	ArrayList<Subject> subjects = new ArrayList<Subject>();
 	Scanner input;
@@ -11,19 +14,30 @@ public class SubjectManager {
 	}
 
 	public void addSubject() {
-		Subject subject = new Subject();
-		System.out.print("Subject Number : ");
-		subject.number = input.nextInt();
-		input.nextLine();
-		System.out.print("Subject Name : ");
-		subject.name = input.nextLine();
-		System.out.print("Exam Date : ");
-		subject.examDate = input.nextLine();
-		System.out.print("Exam Time : ");
-		subject.examTime = input.nextLine();
-		System.out.print("Study Plan : ");
-		subject.studyPlan = input.nextLine();
-		subjects.add(subject);
+		int kind = 0;
+		Subject subject;
+		while (kind != 1 && kind != 2) {
+			System.out.print("1 for Programming");
+			System.out.print("2 for Math");
+			System.out.print("Select num for Subject Kind between 1 and 2 : ");
+			kind = input.nextInt();
+			if (kind == 1) {
+				subject = new Subject();
+				subject.getUserInput(input);
+				subjects.add(subject);
+				break;
+			}
+			else if (kind == 2) {
+				subject = new MathSubject();
+				subject.getUserInput(input);
+				subjects.add(subject);
+				break;
+			}
+			else {
+				System.out.print("Select num for Subject Kind between 1 and 2 : ");
+			}
+		}
+		
 	}
 
 	public void deleteSubject() {
@@ -31,7 +45,7 @@ public class SubjectManager {
 		int subjectNumber = input.nextInt();
 		int index = -1;
 		for (int i = 0; i<subjects.size();i++) {
-			if(subjects.get(i).number == subjectNumber){
+			if(subjects.get(i).getNumber() == subjectNumber){
 				index = i;
 				break;
 			}	
@@ -53,7 +67,7 @@ public class SubjectManager {
 
 		for (int i = 0; i<subjects.size();i++) {
 			Subject subject = subjects.get(i);
-			if (subject.number == subjectNumber) {
+			if (subject.getNumber() == subjectNumber) {
 				int num = -1;
 				while (num != 6) {
 					System.out.println("---- Subject Info Edit Menu ----");
@@ -70,23 +84,28 @@ public class SubjectManager {
 					switch (num) {
 					case 1 :
 						System.out.print("Subject Number : ");
-						subject.number = input.nextInt();
+						int number = input.nextInt();
+						subject.setNumber(number);
 						break;
 					case 2:
 						System.out.print("Subject Name : ");
-						subject.name = input.nextLine();
+						String name = input.nextLine();
+						subject.setName(name);
 						break;
 					case 3:
 						System.out.print("Exam Date : ");
-						subject.examDate = input.nextLine();
+						String examDate = input.nextLine();
+						subject.setExamDate(examDate);
 						break;
 					case 4:
 						System.out.print("Exam Time : ");
-						subject.examTime = input.nextLine();
+						String examTime = input.nextLine();
+						subject.setExamTime(examTime);
 						break;
 					case 5:
 						System.out.print("Study Plan : ");
-						subject.studyPlan = input.nextLine();
+						String studyPlan = input.nextLine();
+						subject.setStudyPlan(studyPlan);
 						break;
 					case 6:
 						continue;
@@ -100,6 +119,7 @@ public class SubjectManager {
 	public void viewSubjects() {
 		//		System.out.print("Subject Number : ");
 		//		int subjectNumber = input.nextInt();
+		System.out.println("# of registered subjects: " + subjects.size());
 		for (int i = 0; i<subjects.size();i++) {
 			subjects.get(i).printInfo();
 		}
