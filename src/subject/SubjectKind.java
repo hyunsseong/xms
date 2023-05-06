@@ -2,7 +2,7 @@ package subject;
 
 public enum SubjectKind {
 	Programming,
-	Math,
 	Sience,
+	Math,
 	Refinement
 }

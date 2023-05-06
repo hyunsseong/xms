@@ -3,7 +3,10 @@ package xms;
 import java.util.*;
 
 import subject.MathSubject;
+import subject.SienceSubject;
+import subject.SienceSubject;
 import subject.Subject;
+import subject.SubjectKind;
 
 public class SubjectManager {
 	ArrayList<Subject> subjects = new ArrayList<Subject>();
@@ -17,24 +20,31 @@ public class SubjectManager {
 		int kind = 0;
 		Subject subject;
 		while (kind != 1 && kind != 2) {
-			System.out.print("1 for Programming");
-			System.out.print("2 for Math");
-			System.out.print("Select num for Subject Kind between 1 and 2 : ");
+			System.out.println("1 for Programming");
+			System.out.println("2 for Sience");
+			System.out.println("3 for Math");
+			System.out.print("Select num 1,2 or 3 for Subject Kind : ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				subject = new Subject();
+				subject = new Subject(SubjectKind.Programming);
 				subject.getUserInput(input);
 				subjects.add(subject);
 				break;
 			}
 			else if (kind == 2) {
-				subject = new MathSubject();
+				subject = new SienceSubject(SubjectKind.Sience);
+				subject.getUserInput(input);
+				subjects.add(subject);
+				break;
+			}
+			else if (kind == 3) {
+				subject = new MathSubject(SubjectKind.Math);
 				subject.getUserInput(input);
 				subjects.add(subject);
 				break;
 			}
 			else {
-				System.out.print("Select num for Subject Kind between 1 and 2 : ");
+				System.out.print("Select num 1,2 or 3 for Subject Kind : ");
 			}
 		}
 		

@@ -10,7 +10,11 @@ public class Subject {
 	protected String examTime;
 	protected String studyPlan;
 	
-	public Subject() {};
+	public Subject() {}
+	
+	public Subject(SubjectKind kind) {
+		this.kind = kind;
+	}
 	
 	public Subject(int number, String name) {
 		this.number = number;
@@ -18,6 +22,15 @@ public class Subject {
 	}
 	
 	public Subject(int number, String name, String examDate, String examTime, String studyPlan) {
+		this.number = number;
+		this.name = name;
+		this.examDate = examDate;
+		this.examTime = examTime;
+		this.studyPlan = studyPlan;
+	}
+
+	public Subject(SubjectKind kind, int number, String name, String examDate, String examTime, String studyPlan) {
+		this.kind = kind; 
 		this.number = number;
 		this.name = name;
 		this.examDate = examDate;
@@ -73,10 +86,24 @@ public class Subject {
 		this.studyPlan = studyPlan;
 	}
 
-	
 	public void printInfo() {
-		System.out.println("Subject number : " + number +"\t" +"Subject name : " + name + "\t" + "Exam date : " + examDate + "\t" + "Exam time : " + examTime + "\t" + "Exam plan : " + studyPlan);
-		
+		String skind = "none";
+		switch(this.kind) {
+		case Programming:
+			skind = "Programming";
+			break;
+		case Math:
+			skind = "Math";
+			break;
+		case Sience:
+			skind = "Sience";
+			break;
+		case Refinement:
+			skind = "Refinement";
+			break;
+		default :
+		}	
+		System.out.println("Kind : " + skind + "Subject number : " + number +"\t" +"Subject name : " + name + "\t" + "Exam date : " + examDate + "\t" + "Exam time : " + examTime + "\t" + "Exam plan : " + studyPlan);	
 	}
 	
 	public void getUserInput(Scanner input) {
