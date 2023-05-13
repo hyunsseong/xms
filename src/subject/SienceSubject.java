@@ -2,7 +2,7 @@ package subject;
 
 import java.util.Scanner;
 
-public class SienceSubject extends Subject {
+public class SienceSubject extends Subject implements SubjectInput {
 	
 	public SienceSubject(SubjectKind kind) {
 		super(kind);
@@ -48,4 +48,25 @@ public class SienceSubject extends Subject {
 		String studyPlan = input.nextLine();
 		this.setStudyPlan(studyPlan);
 	}
+	
+	public void printInfo() {
+		String skind = "none";
+		switch(this.kind) {
+		case Programming:
+			skind = "Programming";
+			break;
+		case Math:
+			skind = "Math";
+			break;
+		case Sience:
+			skind = "Sience";
+			break;
+		case Refinement:
+			skind = "Refinement";
+			break;
+		default :
+		}	
+		System.out.println("Kind : " + skind + "Subject number : " + number +"\t" +"Subject name : " + name + "\t" + "Exam date : " + examDate + "\t" + "Exam time : " + examTime + "\t" + "Exam plan : " + studyPlan);	
+	}
+	
 }

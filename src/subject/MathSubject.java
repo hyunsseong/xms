@@ -2,7 +2,7 @@ package subject;
 
 import java.util.Scanner;
 
-public class MathSubject extends Subject{
+public class MathSubject extends Subject implements SubjectInput{
 	
 	protected String SubmissionDate;
 	protected String SubmissionTime;
