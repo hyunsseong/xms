@@ -2,25 +2,27 @@ package subject;
 
 import java.util.Scanner;
 
-public abstract class Subject {
+import exception.ExamDateFormatException;
+
+public abstract class Subject implements SubjectInput {
 	protected SubjectKind kind = SubjectKind.Programming;
 	protected int number;
 	protected String name;
 	protected String examDate;
 	protected String examTime;
 	protected String studyPlan;
-	
+
 	public Subject() {}
-	
+
 	public Subject(SubjectKind kind) {
 		this.kind = kind;
 	}
-	
+
 	public Subject(int number, String name) {
 		this.number = number;
 		this.name = name;
 	}
-	
+
 	public Subject(int number, String name, String examDate, String examTime, String studyPlan) {
 		this.number = number;
 		this.name = name;
@@ -37,7 +39,7 @@ public abstract class Subject {
 		this.examTime = examTime;
 		this.studyPlan = studyPlan;
 	}
-	
+
 	public SubjectKind getKind() {
 		return kind;
 	}
@@ -66,7 +68,11 @@ public abstract class Subject {
 		return examDate;
 	}
 
-	public void setExamDate(String examDate) {
+	public void setExamDate(String examDate) throws ExamDateFormatException{
+		if(!examDate.contains(".") && !examDate.equals("")) {
+			throw new ExamDateFormatException();
+		}
+
 		this.examDate = examDate;
 	}
 
@@ -87,6 +93,64 @@ public abstract class Subject {
 	}
 
 	public abstract void printInfo();
-	
-	
+
+
+	public void setSubjectNum(Scanner input) {
+		System.out.print("Subject Number : ");
+		int number = input.nextInt();
+		input.nextLine();
+		this.setNumber(number);
+	}
+
+	public void setSubjectName(Scanner input) {
+		System.out.print("Subject Name : ");
+		String name = input.nextLine();
+		this.setName(name);
+	}
+
+	public void setExamDate(Scanner input) {
+		String examDate = "";
+		while(!examDate.contains(".")) {
+			System.out.print("Exam Date : ");
+			examDate = input.nextLine();
+			try {
+				this.setExamDate(examDate);
+			} catch (ExamDateFormatException e) {
+				System.out.println("Incorrect Exam Date Format. put the Exam Date that cotains '.'");
+			}
+		}
+	}
+
+	public void setExamTime(Scanner input) {
+		System.out.print("Exam Time : ");
+		String examTime = input.nextLine();
+		this.setExamTime(examTime);
+	}
+
+	public void setStudyPlan(Scanner input) {
+		System.out.print("Study Plan : ");
+		String studyPlan = input.nextLine();
+		this.setStudyPlan(studyPlan);
+	}
+
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Programming:
+			skind = "Programming";
+			break;
+		case Math:
+			skind = "Math";
+			break;
+		case Sience:
+			skind = "Sience";
+			break;
+		case Refinement:
+			skind = "Refinement";
+			break;
+		default :
+		}
+		return skind;
+	}
+
 }
