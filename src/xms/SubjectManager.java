@@ -1,17 +1,21 @@
 package xms;
 
+import java.io.Serializable;
 import java.util.*;
 
 import subject.MathSubject;
 import subject.ProgrammingSubject;
 import subject.SienceSubject;
-import subject.Subject;
 import subject.SubjectInput;
 import subject.SubjectKind;
 
-public class SubjectManager {
+public class SubjectManager implements Serializable{ // 추가
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4457152117783979670L; // 추가
 	ArrayList<SubjectInput> subjects = new ArrayList<SubjectInput>();
-	Scanner input;
+	transient Scanner input; // 수정
 
 	public SubjectManager(Scanner input) {
 		this.input = input;

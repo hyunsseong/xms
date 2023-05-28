@@ -1,10 +1,15 @@
 package subject;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.ExamDateFormatException;
 
-public abstract class Subject implements SubjectInput {
+public abstract class Subject implements SubjectInput, Serializable { // 수정
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5325980166361069848L; // 추가
 	protected SubjectKind kind = SubjectKind.Programming;
 	protected int number;
 	protected String name;
