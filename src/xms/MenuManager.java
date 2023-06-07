@@ -9,21 +9,23 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import gui.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
-	static EventLogger logger = new EventLogger("log.txt"); // 추가
+	static EventLogger logger = new EventLogger("log.txt");
 	
 	public static void main(String[] args) {
 
 		Scanner input = new Scanner(System.in); 
-		SubjectManager subjectManager = getObject("subjectmanager.ser"); // 수정~
+		SubjectManager subjectManager = getObject("subjectmanager.ser");
 		if (subjectManager == null) {
 			subjectManager = new SubjectManager(input);
-		}// 여기까지 수정
+		}
 		
+		WindowFrame frame = new WindowFrame(subjectManager); // 추가
 		selectMenu(input, subjectManager);
-		putObject(subjectManager, "subjectmanager.ser"); // 추가
+		putObject(subjectManager, "subjectmanager.ser"); 
 		
 	}
 	
@@ -36,19 +38,19 @@ public class MenuManager {
 				switch (num) {
 				case 1 :
 					subjectManager.addSubject();
-					logger.log("add a subject"); // 추가
+					logger.log("add a subject"); 
 					break;
 				case 2:
 					subjectManager.deleteSubject();
-					logger.log("delete a subject"); // 추가
+					logger.log("delete a subject"); 
 					break;
 				case 3:
 					subjectManager.editSubject();
-					logger.log("edit a subject"); // 추가
+					logger.log("edit a subject");
 					break;
 				case 4:
 					subjectManager.viewSubjects();
-					logger.log("edit a list of subject"); // 추가
+					logger.log("edit a list of subject");
 					break;
 				default:
 					continue;

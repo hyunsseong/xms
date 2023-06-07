@@ -10,11 +10,19 @@ public interface SubjectInput {
 	
 	public void setNumber(int number);
 	
+	public String getName(); // 추가
+	
 	public void setName(String name);
+	
+	public String getExamDate(); // 추가
 	
 	public void setExamDate(String examDate) throws ExamDateFormatException;
 	
+	public String getExamTime(); // 추가
+	
 	public void setExamTime(String examTime);
+	
+	public String getStudyPlan(); // 추가
 	
 	public void setStudyPlan(String studyPlan);
 	

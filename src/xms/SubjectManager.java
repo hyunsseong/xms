@@ -6,6 +6,7 @@ import java.util.*;
 import subject.MathSubject;
 import subject.ProgrammingSubject;
 import subject.SienceSubject;
+import subject.Subject;
 import subject.SubjectInput;
 import subject.SubjectKind;
 
@@ -138,7 +139,15 @@ public class SubjectManager implements Serializable{ // 추가
 			subjects.get(i).printInfo();
 		}
 	}
+	
+	// 새로운 함수 추가
+	public int size() {
+		return subjects.size();
+	}
 
+	public SubjectInput get(int index) {
+		return (Subject) subjects.get(index);
+	}
 
 
 	public void showEditMenu() {
