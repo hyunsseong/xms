@@ -10,18 +10,28 @@ import subject.Subject;
 import subject.SubjectInput;
 import subject.SubjectKind;
 
-public class SubjectManager implements Serializable{ // 추가
+public class SubjectManager implements Serializable{ 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4457152117783979670L; // 추가
+	private static final long serialVersionUID = 4457152117783979670L; 
 	ArrayList<SubjectInput> subjects = new ArrayList<SubjectInput>();
-	transient Scanner input; // 수정
+	transient Scanner input; 
 
 	public SubjectManager(Scanner input) {
 		this.input = input;
 	}
 
+	public void addSubject(String num, String name, String examDate, String examTime, String studyPlan) {
+		SubjectInput subjectInput = new ProgrammingSubject(SubjectKind.Programming);
+		subjectInput.getUserInput(input);
+		subjects.add(subjectInput);
+	}
+	
+	public void addSubject(SubjectInput subjectInput) {
+		subjects.add(subjectInput);
+	}
+	
 	public void addSubject() {
 		int kind = 0;
 		SubjectInput subjectInput;

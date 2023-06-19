@@ -21,7 +21,7 @@ public class WindowFrame extends JFrame {
 		
 		this.subjectManager = subjectManager;
 		menuselection = new MenuSelection(this);
-		subjectadder = new SubjectAdder(this);
+		subjectadder = new SubjectAdder(this, this.subjectManager);
 		subjectviewer = new SubjectViewer(this, this.subjectManager);
 		
 		

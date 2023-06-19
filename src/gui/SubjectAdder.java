@@ -7,12 +7,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import event.SubjectAdderCancelListener;
+import event.SubjectAdderListener;
+import xms.SubjectManager;
+
 public class SubjectAdder extends JPanel {
 	
 	WindowFrame frame;
 	
-	public SubjectAdder(WindowFrame frame) {
+	SubjectManager subjectManager;
+	
+	public SubjectAdder(WindowFrame frame, SubjectManager subjectManager) {
 		this.frame = frame;
+		this.subjectManager = subjectManager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -44,11 +51,18 @@ public class SubjectAdder extends JPanel {
 		JLabel labelStudyPlan = new JLabel("Study Plan : ", JLabel.TRAILING);
 		JTextField fieldStudyPlan = new JTextField(10);
 		labelStudyPlan.setLabelFor(fieldStudyPlan);
+		
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new SubjectAdderListener(fieldNum, fieldName, fieldExamDate, fieldExamTime, fieldStudyPlan, subjectManager));
+		
+		JButton cancelButton = new JButton("cancel");
+		cancelButton.addActionListener(new SubjectAdderCancelListener(frame));
+		
 		panel.add(labelStudyPlan);
 		panel.add(fieldStudyPlan);
 		
-		panel.add(new JButton("save"));
-		panel.add(new JButton("cancel"));
+		panel.add(saveButton);
+		panel.add(cancelButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 6, 2, 6, 6, 6, 6);
 		

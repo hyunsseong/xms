@@ -75,7 +75,7 @@ public class MenuManager {
 		System.out.print("Select one number between 1 - 5: ");
 	}
 	
-	public static SubjectManager getObject(String filename) { // 새로운 함수 추가
+	public static SubjectManager getObject(String filename) { 
 		SubjectManager subjectManager = null;
 		try {
 			FileInputStream file = new FileInputStream(filename);
@@ -96,7 +96,7 @@ public class MenuManager {
 		
 	}
 	
-	public static void putObject(SubjectManager subjectManager, String filename) { // 새로운 함수 추가
+	public static void putObject(SubjectManager subjectManager, String filename) { 
 		
 		try {
 			FileOutputStream file = new FileOutputStream(filename);

@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import listeners.ButtonAddListener;
-import listeners.ButtonViewListener;
+import event.ButtonAdderListener;
+import event.ButtonViewerListener;
 
 public class MenuSelection extends JPanel { // 수정
 	
@@ -29,8 +29,8 @@ public class MenuSelection extends JPanel { // 수정
 		JButton button4 = new JButton("Delete Subject");
 		JButton button5 = new JButton("Exit Program");
 		
-		button1.addActionListener(new ButtonAddListener(frame)); // 수정
-		button2.addActionListener(new ButtonViewListener(frame)); // 수정
+		button1.addActionListener(new ButtonAdderListener(frame)); // 수정
+		button2.addActionListener(new ButtonViewerListener(frame)); // 수정
 		
 		panel1.add(label);
 		panel2.add(button1);
