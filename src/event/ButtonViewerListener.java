@@ -40,7 +40,7 @@ public class ButtonViewerListener implements ActionListener {
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
-			subjectManager = (SubjectManager)in.readObject();
+			subjectManager = (SubjectManager)in.readObject(); // 추가
 			
 			in.close();
 			file.close();
